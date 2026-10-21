@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1100</width><height>700</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>学生考勤管理系统</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing"><number>0</number></property>
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex"><number>0</number></property>
+
+      <!-- Tab 0: 考勤打卡 -->
+      <widget class="QWidget" name="tabCheckin">
+       <attribute name="title"><string>考勤打卡</string></attribute>
+       <layout class="QHBoxLayout" name="checkinLayout">
+        <item>
+         <widget class="QWidget" name="checkinLeft" native="true">
+          <layout class="QVBoxLayout" name="checkinLeftLayout">
+           <item>
+            <widget class="QWidget" name="cameraContainer" native="true">
+             <!-- CameraWidget will be added here programmatically -->
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="checkinBtnLayout">
+             <item><spacer name="checkinSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+             <item><widget class="QPushButton" name="checkinBtn">
+              <property name="text"><string>📸 打卡签到</string></property>
+              <property name="minimumSize"><size><width>160</width><height>40</height></size></property>
+              <property name="font"><font><pointsize>14</pointsize><weight>75</weight><bold>true</bold></font></property>
+             </widget></item>
+             <item><widget class="QPushButton" name="autoCheckinBtn">
+              <property name="text"><string>🔄 自动识别</string></property>
+              <property name="minimumSize"><size><width>140</width><height>40</height></size></property>
+              <property name="font"><font><pointsize>12</pointsize><weight>75</weight><bold>true</bold></font></property>
+              <property name="checkable"><bool>true</bool></property>
+             </widget></item>
+             <item><spacer name="checkinSpacer2"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="checkinStatus">
+             <property name="text"><string>就绪</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="minimumSize"><size><width>0</width><height>24</height></size></property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="checkinRight" native="true">
+          <property name="maximumSize"><size><width>380</width><height>16777215</height></size></property>
+          <layout class="QVBoxLayout" name="checkinRightLayout">
+           <item>
+            <widget class="QLabel" name="todayLabel">
+             <property name="text"><string>今日打卡记录</string></property>
+             <property name="font"><font><pointsize>13</pointsize><weight>75</weight><bold>true</bold></font></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableView" name="todayTableView">
+             <property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property>
+             <property name="selectionBehavior"><set>QAbstractItemView::SelectRows</set></property>
+             <property name="alternatingRowColors"><bool>true</bool></property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Tab 1: 人脸注册 -->
+      <widget class="QWidget" name="tabRegister">
+       <attribute name="title"><string>人脸注册</string></attribute>
+       <layout class="QVBoxLayout" name="registerLayout">
+        <item>
+         <widget class="QPushButton" name="openRegisterBtn">
+          <property name="text"><string>📝 打开人脸注册</string></property>
+          <property name="minimumSize"><size><width>200</width><height>36</height></size></property>
+          <property name="font"><font><pointsize>13</pointsize><weight>75</weight><bold>true</bold></font></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="registeredInfo">
+          <property name="text"><string>已注册人脸: 0 人</string></property>
+          <property name="alignment"><set>Qt::AlignCenter</set></property>
+          <property name="font"><font><pointsize>12</pointsize></font></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableView" name="registeredTableView">
+          <property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property>
+          <property name="selectionBehavior"><set>QAbstractItemView::SelectRows</set></property>
+          <property name="alternatingRowColors"><bool>true</bool></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Tab 2: 考勤记录 -->
+      <widget class="QWidget" name="tabRecords">
+       <attribute name="title"><string>考勤记录</string></attribute>
+       <layout class="QVBoxLayout" name="recordsLayout">
+        <item>
+         <widget class="QTableView" name="recordsTableView"/>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Tab 3: 考勤统计 -->
+      <widget class="QWidget" name="tabStatistics">
+       <attribute name="title"><string>考勤统计</string></attribute>
+       <layout class="QVBoxLayout" name="statsLayout">
+        <item>
+         <layout class="QHBoxLayout" name="statsCardsLayout">
+          <item>
+           <widget class="QLabel" name="statTotalLabel">
+            <property name="text"><string>注册学生\n0</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="minimumSize"><size><width>150</width><height>80</height></size></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="statPresentLabel">
+            <property name="text"><string>今日出勤\n0</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="minimumSize"><size><width>150</width><height>80</height></size></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="statRateLabel">
+            <property name="text"><string>出勤率\n0%</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="minimumSize"><size><width>150</width><height>80</height></size></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="statsTitle">
+          <property name="text"><string>学生考勤汇总</string></property>
+          <property name="font"><font><pointsize>13</pointsize><weight>75</weight><bold>true</bold></font></property>
+          <property name="alignment"><set>Qt::AlignCenter</set></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableView" name="statsTableView">
+          <property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property>
+          <property name="selectionBehavior"><set>QAbstractItemView::SelectRows</set></property>
+          <property name="alternatingRowColors"><bool>true</bool></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect><x>0</x><y>0</y><width>1100</width><height>21</height></rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea"><enum>TopToolBarArea</enum></attribute>
+   <attribute name="toolBarBreak"><bool>false</bool></attribute>
+   <addaction name="actOpenDB"/>
+   <addaction name="actRefresh"/>
+   <addaction name="separator"/>
+   <addaction name="actQuit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actOpenDB">
+   <property name="text"><string>打开数据库</string></property>
+  </action>
+  <action name="actQuit">
+   <property name="text"><string>退出</string></property>
+  </action>
+  <action name="actRefresh">
+   <property name="text"><string>刷新</string></property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+  </connection>
+ </connections>
+</ui>
